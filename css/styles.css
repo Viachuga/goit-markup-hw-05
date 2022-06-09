@@ -18,6 +18,7 @@ body {
   font-size: 14px;
   color: var(--text-color);
   background-color: var(--white-color);
+  cursor: default;
 }
 
 .container {
@@ -25,7 +26,7 @@ body {
   margin: 0 auto;
   padding-left: 15px;
   padding-right: 15px;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 
 h1,
@@ -90,11 +91,14 @@ img {
   font-size: 26px;
   line-height: 1.19;
 }
+
 /* КІНЕЦЬ ЛОГО */
 
 .header {
   border-bottom: 1px solid var(--border-color);
+  position: relative;
 }
+
 .header-all {
   display: flex;
 }
@@ -145,10 +149,22 @@ img {
   padding-bottom: 32px;
   display: flex;
   align-items: center;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .current {
   color: var(--akcent-color);
+  position: relative;
+}
+
+.current::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  bottom: 0;
+  background: var(--akcent-color);
+  border-radius: 2px;
 }
 
 .nav-text:hover,
@@ -168,12 +184,14 @@ img {
 .icon-contacts {
   fill: var(--text-color);
   margin-right: 10px;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* ----------------------------КІНЕЦЬ ХЕДЕРА---------------------------- */
 
 /* ----------------------------БАНЕР---------------------------- */
 .section-hero {
   max-width: 1600px;
+  height: 600px;
   background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
     url(../images/hero-bg.jpg);
   background-color: var(--bg-hero);
@@ -234,6 +252,7 @@ img {
   border-radius: 4px;
   background-color: var(--akcent-color);
   color: var(--white-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-baner:hover,
@@ -251,6 +270,8 @@ img {
   letter-spacing: 0.03em;
   background-color: var(--akcent-color);
   color: var(--white-color);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover,
@@ -326,6 +347,27 @@ img {
 .item-works + .item-works {
   margin-left: 30px;
 }
+
+.item-works {
+  position: relative;
+  overflow: hidden;
+}
+
+.label {
+  padding-top: 26px;
+  padding-bottom: 26px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background-color: rgba(47, 48, 58, 0.8);
+  color: var(--white-color);
+}
+
 /* ----------------------------КІНЕЦЬ ЧИМ ЗАЙМАЄМОСЬ---------------------------- */
 
 /* ----------------------------КОМАНДА---------------------------- */
@@ -385,6 +427,7 @@ img {
   align-items: center;
   justify-content: center;
   fill: #afb1b8;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link-icon:hover,
@@ -407,7 +450,7 @@ img {
   margin-top: 50px;
 }
 
-.partners {
+.clients {
   padding-bottom: 94px;
   padding-top: 94px;
 }
@@ -421,6 +464,8 @@ img {
   display: flex;
   justify-content: center;
   cursor: pointer;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .rect + .rect {
@@ -447,6 +492,7 @@ img {
   justify-content: center;
   fill: #afb1b8;
   width: 100%;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ----------------------------КІНЕЦЬ КОМАНДИ---------------------------- */
@@ -454,11 +500,11 @@ img {
 /* ----------------------------ФУТЕР---------------------------- */
 .footer-main {
   display: flex;
+  align-items: baseline;
 }
 
 .footer-social {
   margin-left: 70px;
-  margin-top: 12px;
 }
 
 .footer {
@@ -474,7 +520,6 @@ img {
 .address,
 .contacts {
   padding: 0;
-  margin-bottom: 9px;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.71;
@@ -520,6 +565,7 @@ img {
   justify-content: center;
   fill: #afb1b8;
   background: rgba(255, 255, 255, 0.1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .link-icon-footer:hover,
@@ -533,6 +579,62 @@ img {
 }
 .item-icon-footer + .item-icon-footer {
   margin-left: 10px;
+}
+
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 528px;
+  min-height: 581px;
+  background-color: var(--white-color);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 300ms;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.close-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  padding: 6px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close-icon:hover,
+.close-icon:focus {
+  fill: var(--akcent-color);
 }
 
 /* ----------------------------КІНЕЦЬ ФУТЕРА---------------------------- */
@@ -552,6 +654,9 @@ img {
   color: var(--h-color);
   border: none;
   border-radius: 4px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-btn + .filter-btn {
@@ -600,10 +705,49 @@ img {
   flex-basis: calc(100% / 3 - 30px);
   margin-bottom: 30px;
   margin-right: 30px;
+  transition: translatex 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.filter-item:hover,
-.filter-item:focus {
+.pic {
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-item:hover .overlay {
+  transform: translatex(0);
+}
+
+.filter-link:focus .overlay {
+  transform: translatex(0);
+}
+
+.overlay {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(33, 150, 243, 0.9);
+  width: 100%;
+  height: 100%;
+  transform: translatey(100%);
+  transition: transform 250ms ease;
+}
+
+.overlay p {
+  color: var(--white-color);
+  padding: 63px 24px;
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.56;
+}
+
+.filter-link {
+  display: block;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-link:hover,
+.filter-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }

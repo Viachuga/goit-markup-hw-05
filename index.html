@@ -64,7 +64,7 @@
             Ефективні рішення <br />
             для вашого бізнесу
           </h1>
-          <button type="button" class="button-baner">Замовити послугу</button>
+          <button data-modal-open type="button" class="button-baner">Замовити послугу</button>
         </div>
       </section>
 
@@ -131,12 +131,15 @@
           <ul class="list-works list">
             <li class="item-works">
               <img src="images/box1.jpg" width="370" height="294" alt="box1" />
+              <p class="label">Десктопные приложения</p>
             </li>
             <li class="item-works">
               <img src="images/box2.jpg" width="370" height="294" alt="box2" />
+              <p class="label">Мобильные приложения</p>
             </li>
             <li class="item-works">
               <img src="images/box3.jpg" width="370" height="294" alt="box3" />
+              <p class="label">Дизайнерские решения</p>
             </li>
           </ul>
         </div>
@@ -302,43 +305,43 @@
         </div>
       </section>
 
-      <section>
+      <section class="clients">
         <div class="container partners">
           <h2 class="partners-main">Постійні клієнти</h2>
           <ul class="partners-list list">
             <li class="rect">
               <a href="" class="link-rect link"
-                ><svg class="soc-icon" width="41" height="47">
+                ><svg class="soc-icon" width="106" height="60">
                   <use href="./images/symbol-defs.svg#icon-group"></use></svg
               ></a>
             </li>
             <li class="rect">
               <a href="" class="link-rect link"
-                ><svg class="soc-icon" width="40" height="52">
+                ><svg class="soc-icon" width="106" height="60">
                   <use href="./images/symbol-defs.svg#icon-group-1"></use></svg
               ></a>
             </li>
             <li class="rect">
               <a href="" class="link-rect link"
-                ><svg class="soc-icon" width="44" height="42">
+                ><svg class="soc-icon" width="106" height="60">
                   <use href="./images/symbol-defs.svg#icon-group-2"></use></svg
               ></a>
             </li>
             <li class="rect">
               <a href="" class="link-rect link"
-                ><svg class="soc-icon" width="84" height="40">
+                ><svg class="soc-icon" width="106" height="60">
                   <use href="./images/symbol-defs.svg#icon-group-3"></use></svg
               ></a>
             </li>
             <li class="rect">
               <a href="" class="link-rect link"
-                ><svg class="soc-icon" width="63" height="46">
+                ><svg class="soc-icon" width="106" height="60">
                   <use href="./images/symbol-defs.svg#icon-group-4"></use></svg
               ></a>
             </li>
             <li class="rect">
               <a href="" class="link-rect link"
-                ><svg class="soc-icon" width="94" height="44">
+                ><svg class="soc-icon" width="106" height="60">
                   <use href="./images/symbol-defs.svg#icon-group-5"></use></svg
               ></a>
             </li>
@@ -411,5 +414,15 @@
         </div>
       </div>
     </footer>
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button class="close-icon" type="button" data-modal-close>
+          <svg width="30" height="30">
+            <use href="./images/symbol-defs.svg#icon-close-b"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <script src="./modal.js"></script>
   </body>
 </html>
